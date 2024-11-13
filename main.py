@@ -259,4 +259,3 @@ async def vision_pdf(bot: Client, m: Message):
         await m.reply_text(e)
     await m.reply_text("**Done✅**")
     
-  bot.run()
