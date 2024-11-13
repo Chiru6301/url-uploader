@@ -260,5 +260,3 @@ async def vision_pdf(bot: Client, m: Message):
     await m.reply_text("**Done✅**")
     
   bot.run()
-if __name__ == "__main__":
-    asyncio.run(main())
