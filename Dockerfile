@@ -26,7 +26,7 @@ COPY . .
 RUN pip3 install --no-cache-dir --upgrade -r requirements.txt
 
 # Expose the port on which the application will run
-EXPOSE 5000
+EXPOSE 8000
 
 # Command to run the application
 CMD ["python3", "main.py"]
