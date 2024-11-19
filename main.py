@@ -146,11 +146,6 @@ async def txt_handler(bot: Client, m: Message):
     else:
         CR = raw_text3
 
-    await editable.edit("**Enter token here if you want to Download the video of Classplus.**")
-    inputtoken: Message = await bot.listen(editable.chat.id)
-    raw_text_tok = inputtoken.text
-    await inputtoken.delete(True)
-  
     await editable.edit("Now send the **Thumb url**\n**Eg :** `https://telegra.ph/file/0e6ab2464c68076c42c24.jpg`\n\nor Send `no`")
     input6 = message = await bot.listen(editable.chat.id)
     raw_text6 = input6.text
