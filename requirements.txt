@@ -29,7 +29,7 @@ TgCrypto
 urllib3
 websockets
 motor
-aiohttp
+aiohttp==3.8.2
 aiofiles
 pytz
 umongo
