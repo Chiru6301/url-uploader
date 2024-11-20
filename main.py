@@ -1,34 +1,31 @@
-import os
-import re
-import sys
-import json
-import time
-import asyncio
-import requests
-import subprocess
-
-import core as helper
-from utils import progress_bar
-from vars import API_ID, API_HASH, BOT_TOKEN
-from aiohttp import ClientSession
-from pyromod import listen
-from subprocess import getstatusoutput
-from aiohttp import web
-
-from pyrogram import Client, filters
-from pyrogram.types import Message
-from pyrogram.errors import FloodWait
 from pyrogram.errors.exceptions.bad_request_400 import StickerEmojiInvalid
+import requests
+import json
+import subprocess
+from pyrogram import Client, filters
 from pyrogram.types.messages_and_media import message
 from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup
+from pyrogram.errors import FloodWait
+from pyromod import listen
+from pyrogram.types import Message
+from pyrogram import Client, filters
+from p_bar import progress_bar
+from subprocess import getstatusoutput
+from aiohttp import ClientSession
+import helper
+from logger import logging
+import time
+import asyncio
+from pyrogram.types import User, Message
+import sys
+import re
+import os
 
-# Initialize the bot
-bot = Client(
-    "bot",
-    api_id=API_ID,
-    api_hash=API_HASH,
-    bot_token=BOT_TOKEN
-)
+bot = Client("bot",
+             bot_token= "7964884946:AAF533AE4H4tMLGTmpiZmej5j1xPeJHnkPk",
+             api_id= 27120862,
+             api_hash= "53d8ec88810f7445732ea234121e6219")
+ADMINS = [1226915008]
 
 # Define aiohttp routes
 routes = web.RouteTableDef()
