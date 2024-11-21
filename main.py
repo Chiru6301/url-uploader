@@ -254,5 +254,5 @@ async def vision_pdf(bot: Client, m: Message):
         await m.reply_text(e)
     await m.reply_text("**Done✅**")
     
-bot.run()
+app.run()
 if __name__ == "__main__":
