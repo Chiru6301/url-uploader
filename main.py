@@ -27,6 +27,34 @@ bot = Client("bot",
              api_hash= "53d8ec88810f7445732ea234121e6219")
 ADMINS = [1226915008]
 
+# Define aiohttp routes
+routes = web.RouteTableDef()
+
+@routes.get("/", allow_head=True)
+async def root_route_handler(request):
+    return web.json_response("https://url-uploader-for-render.onrender.com/")
+
+async def web_server():
+    web_app = web.Application(client_max_size=30000000)
+    web_app.add_routes(routes)
+    return web_app
+
+async def start_bot():
+    await bot.start()
+    print("Bot is up and running")
+
+async def stop_bot():
+    await bot.stop()
+
+async def main():
+    if WEBHOOK:
+        # Start the web server
+        app_runner = web.AppRunner(await web_server())
+        await app_runner.setup()
+        site = web.TCPSite(app_runner, "0.0.0.0", PORT)
+        await site.start()
+        print(f"Web server started on port {PORT}")
+
 @bot.on_message(filters.command(["start"]) )
 async def account_login(bot: Client, m: Message):
     editable = await m.reply_text(f"**Hi 👋 Sir.. How are you ?**\n**Bot Made BY 𝗔𝗡𝗞𝗜𝗧 𝗦𝗛𝗔𝗞𝗬𝗔™👨🏻‍💻**")
