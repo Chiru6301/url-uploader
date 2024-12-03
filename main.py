@@ -27,13 +27,6 @@ bot = Client("bot",
              api_hash= "53d8ec88810f7445732ea234121e6219")
 ADMINS = [1226915008]
 
-# Define aiohttp routes
-routes = web.RouteTableDef()
-
-@routes.get("/", allow_head=True)
-async def root_route_handler(request):
-    return web.json_response("https://url-uploader-jebb.onrender.com/")
-
 async def web_server():
     web_app = web.Application(client_max_size=30000000)
     web_app.add_routes(routes)
