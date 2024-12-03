@@ -1,4 +1,5 @@
-FROM python:3.9.7-slim-buster
+#FROM python:3.9.7-slim-buster
+FROM python:3.10.8-slim-buster
 
 RUN apt-get update -y && apt-get upgrade -y \
 
@@ -8,12 +9,9 @@ RUN apt-get update -y && apt-get upgrade -y \
 
     && rm -rf /var/lib/apt/lists/*
 
-
-
 COPY . /app/
-
 WORKDIR /app/
 
 RUN pip3 install --no-cache-dir --upgrade --requirement requirements.txt
-
-CMD python3 main.py
+#CMD ["python3", "modules/main.py"]
+CMD gunicorn app:app & python3 modules/main.py
