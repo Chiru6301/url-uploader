@@ -27,6 +27,3 @@ bot = Client("bot",
              api_hash= "53d8ec88810f7445732ea234121e6219")
 ADMINS = [1226915008]
 
-@bot.on_message(filters.command(["start"]) )
-async def account_login(bot: Client, m: Message):
-    editable = await m.reply_text(f"**Hi 👋 Sir.. How are you ?**\n**Bot Made BY 𝗔𝗡𝗞𝗜𝗧 𝗦𝗛𝗔𝗞𝗬𝗔™👨🏻‍💻**")
