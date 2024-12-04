@@ -22,10 +22,10 @@ import re
 import os
 
 bot = Client("bot",
-             bot_token= "7793991199:AAEjMEVABNjA6X2OMnULU5XVSZQ6BBaccZE",
-             api_id= 27120862,
-             api_hash= "53d8ec88810f7445732ea234121e6219")
-ADMINS = [1226915008]
+             bot_token= "6501795694:AAFxbITPxAyfRK8injO3gZW2anI-MxgIBY4",
+             api_id= 29611384,
+             api_hash= "3090026bd04c23797e0c6ca1d563b5ec")
+ADMINS = [6092609335]
 
 @bot.on_message(filters.command(["start"]) )
 async def account_login(bot: Client, m: Message):
@@ -33,10 +33,10 @@ async def account_login(bot: Client, m: Message):
 
 @bot.on_message(filters.command(["stop"]) )
 async def restart_handler(_, m):
-    await m.reply_text("**BATCH SUCCESSFULLY STOPPED**🛑", True)
+    await m.reply_text("**STOPPED**🛑", True)
     os.execl(sys.executable, sys.executable, *sys.argv)
 
-@bot.on_message(filters.command(["batmanhc"]) )
+@bot.on_message(filters.command(["ankt","upload"]) )
 async def txt_handler(bot: Client, m: Message):
     editable = await m.reply_text(f"**🔹Hi I am Poweful TXT Downloader📥 Bot.**\n🔹**Send me the TXT file and wait.**")
     input: Message = await bot.listen(editable.chat.id)
@@ -104,11 +104,6 @@ async def txt_handler(bot: Client, m: Message):
         CR = credit
     else:
         CR = raw_text3
-
-    await editable.edit("**Enter token here if you want to Download the video of Classplus.**")
-    inputtoken: Message = await bot.listen(editable.chat.id)
-    raw_text_tok = inputtoken.text
-    await inputtoken.delete(True)
   
     await editable.edit("Now send the **Thumb url**\n**Eg :** `https://telegra.ph/file/0e6ab2464c68076c42c24.jpg`\n\nor Send `no`")
     input6 = message = await bot.listen(editable.chat.id)
@@ -188,12 +183,14 @@ async def txt_handler(bot: Client, m: Message):
                         time.sleep(e.x)
                         continue
                 else:
-                    prog = await m.reply_text(f"**DOWNLOADING 📥 :-**\n\n**Video Name ➢** {name}\n**Quality ➢** {raw_text2}\n\n** 𝐓𝐡𝐢𝐬 𝐁𝐨𝐭 𝐌𝐚𝐝𝐞 𝐁𝐲 ➤ 𝐁𝐀𝐓𝐌𝐀𝐍-𝐇.𝐂.™**🇮🇳")
+                    Show = await m.reply_text(f"**DOWNLOADING 📥 :-**\n\n**Video Name ➢** {name}\n**Quality ➢** {raw_text2}\n\n** 𝐓𝐡𝐢𝐬 𝐁𝐨𝐭 𝐌𝐚𝐝𝐞 𝐁𝐲 ➤ 𝐁𝐀𝐓𝐌𝐀𝐍-𝐇.𝐂.™**🇮🇳")
+                    prog = await m.reply_text(Show)
                     res_file = await helper.download_video(url, cmd, name)
                     filename = res_file
                     await prog.delete(True)
-                    await helper.send_vid(bot, m, cc, filename, thumb, name)
+                    await helper.send_vid(bot, m, cc, filename, thumb, name, prog)
                     count += 1
+                    time.sleep(1)
 
             except Exception as e:
                 await m.reply_text(f"**This #Failed File is not Counted**\n**Name ➢** `{name}`\n**Link ➢** `{url}`\n\n ** fail reason ➢** {e}")
